@@ -1,0 +1,10 @@
+{% extends './layout.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Home</h1>
+    {% if current_user.is_authenticated %}
+    <p>Welcome to Pokedex, {{ current_user.username }}</p>
+    {% endif %}
+</div>
+{% endblock content %}
