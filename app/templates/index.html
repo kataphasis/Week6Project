@@ -5,6 +5,28 @@
     <h1>Home</h1>
     {% if current_user.is_authenticated %}
     <p>Welcome to Pokedex, {{ current_user.username }}</p>
+    <p>Here is a list of all pokemon available in the dex</p>
+    <p>Try to add one by name in the form below</p>
+    <div class="container">
+        <h1>Add Pokemon</h1>
+        <form action="/addpokemon" method="POST">
+            <div class="form-group">
+              <label for="inputName">Name</label>
+              <input type="name" class="form-control" name="inputName" id="inputName" aria-describedby="nameHelp">
+            </div>
+        </form>
+    </div>
+    <p>Select which pokemon you would like in your personal collection</p>
+    {%for i in Pokemon%}
+    <div class="card w-30 mx-auto my-4 text-center">
+      <div class="card-body">
+        <h5 class="card-title">{{i.name}}</h5>
+        <p class="card-text">{{i.sprite}}.</p>
+        <p class="card-text">{{i.date_created}}.</p>
+        <p class="card-text">This pokemon has {{i.ability1}} and {{i.ability2}} as starting abilities,
+          a weight of {{i.weight}}, starting {{i.statName1}} of {{i.statValue1}},
+          starting {{i.statName2}} of {{i.statValue2}}, and starting {{i.statName3}} of {{i.statValue3}}
+        </p>
     {% endif %}
 </div>
 {% endblock content %}

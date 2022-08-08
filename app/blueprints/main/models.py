@@ -9,8 +9,8 @@ class User(UserMixin, db.Model):
     username = db.Column(db.String(50))
     first_name = db.Column(db.String(50))
     last_name = db.Column(db.String(50))
-    password = db.Column(db.String(100))
-    posts = db.relationship('Post', backref="user", lazy="dynamic")
+    password = db.Column(db.String(250))
+    pokemon = db.relationship('Pokemon', backref="user", lazy="dynamic")
 
     def hash_my_password(self, password):
         self.password = generate_password_hash(password)
@@ -20,8 +20,17 @@ class User(UserMixin, db.Model):
 
 class Pokemon(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(20))
-    description = db.Column(db.String(100))
+    name = db.Column(db.String(25))
+    type = db.Column(db.String(20))
+    ability1 = db.Column(db.String(20))
+    ability2 = db.Column(db.String(20))
+    statName1 = db.Column(db.String(20))
+    statValue1 = db.Column(db.Integer)
+    statName2 = db.Column(db.String(20))
+    statValue2 = db.Column(db.Integer)
+    statName3 = db.Column(db.String(20))
+    statValue3 = db.Column(db.Integer)
+    weight = db.Column(db.Integer)
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
