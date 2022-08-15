@@ -23,8 +23,10 @@ def login():
 @app.route("/register", methods=['GET', "POST"])
 def register():
     if request.method == "POST":
-        check_user = User.query.filter_by(email=request.form['inputEmail']).first()
+        # check_user = True
+        # if check_user == True:
 
+        check_user = User.query.filter_by(email=request.form['inputEmail']).first()
         if check_user is not None:
             flash('Error, user already exists')
         else:
@@ -39,7 +41,7 @@ def register():
                 new_user.hash_my_password(request.form['inputPassword'])
                 db.session.add(new_user)
                 db.session.commit()
-                return request.form
+                return render_template('index.html')
             else:
                 flash('Error, passwords do not match')
         return render_template('register.html')

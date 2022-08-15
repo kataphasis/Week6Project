@@ -17,16 +17,17 @@
         </form>
     </div>
     <p>Select which pokemon you would like in your personal collection</p>
-    {%for i in Pokemon%}
-    <div class="card w-30 mx-auto my-4 text-center">
-      <div class="card-body">
-        <h5 class="card-title">{{i.name}}</h5>
-        <p class="card-text">{{i.sprite}}.</p>
-        <p class="card-text">{{i.date_created}}.</p>
-        <p class="card-text">This pokemon has {{i.ability1}} and {{i.ability2}} as starting abilities,
-          a weight of {{i.weight}}, starting {{i.statName1}} of {{i.statValue1}},
-          starting {{i.statName2}} of {{i.statValue2}}, and starting {{i.statName3}} of {{i.statValue3}}
-        </p>
+      {%for i in pokemon%}
+      <div class="card w-30 mx-auto my-4 text-center">
+        <div class="card-body">
+          <h5 class="card-title">{{i.name}}</h5>
+          <img src="{{i.sprite}}">
+          <p class="card-text">{{i.date_created}}.</p>
+          <p class="card-text">This pokemon has {{i.ability1}} and {{i.ability2}} as starting abilities,
+            a weight of {{i.weight}}, starting {{i.statName1}} of {{i.statValue1}},
+            starting {{i.statName2}} of {{i.statValue2}}, and starting {{i.statName3}} of {{i.statValue3}}
+          </p>
+      {%endfor%}
     {% endif %}
 </div>
 {% endblock content %}
